@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void iniciar_juego(int filas,int columnas,int **matrix){
+    int i;
+    for(i=0;i<filas;i++){
+        matrix[i]=((int *)malloc(columnas * sizeof(int)));
+    }
+}
+void llenar_tablero(int filas,int columnas,int **matrix){
+  int j=0;
+  while(j<filas){
+    int i;
+    for(i=0;i<columnas;i++){
+      matrix[j][i]=1;
+    }
+    j++;
+  }
+}
+void imprimir_tablero(int filas,int columnas,int **matrix){
+    int w=0;
+    while(w<filas){
+        int k=0;
+        printf("\n");
+        printf(" |");
+        while(k<columnas){
+            printf("  %d  ",matrix[w][k]);
+            k++;
+        }
+        printf("|");
+        printf("\n");
+        w++;
+    }
+}
+int main(int argc,char *argv[],int argc2,char *argv2[]){
+    int filas=atoi(argv[1]);
+    int columnas=atoi(argv[2]);
+
+    int **matrix=(int **)malloc((filas*2) * sizeof(int));
+    iniciar_juego(filas,columnas,matrix);
+    llenar_tablero(filas,columnas,matrix);
+    imprimir_tablero(filas,columnas,matrix);
+}
